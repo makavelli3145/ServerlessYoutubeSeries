@@ -2,8 +2,8 @@ service: myserverlessproject
 
 provider:
     name: aws
-    runtime: nodejs10.x
-    profile: serverlessUser
+    runtime: nodejs16.x
+    profile: DeveloperAccess-167801788253
     region: eu-west-1
     environment:
         tableName: ${self:custom.tableName}
@@ -23,7 +23,7 @@ package:
 custom:
     tableName: player-points
     s3Sync:
-        - bucketName: myserverlessprojectuploadbucket-12312
+        - bucketName: siphos-serverless-s3
           localDir: UploadData
 
 functions:
@@ -47,7 +47,7 @@ resources:
         DemoBucketUpload:
             Type: AWS::S3::Bucket
             Properties:
-                BucketName: myserverlessprojectuploadbucket-12312
+                BucketName: siphos-serverless-s3
         MyDynamoDbTable:
             Type: AWS::DynamoDB::Table
             Properties:
